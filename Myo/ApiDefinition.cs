@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 using MonoTouch.ObjCRuntime;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using MonoTouch.GLKit;
-using System.Runtime.InteropServices;
+using OpenTK;
 
 namespace Myo
 {
@@ -18,8 +18,8 @@ namespace Myo
 		[Export("timestamp")]
 		NSDate Timestamp { get; set; }
 
-		//[Export("vector")]
-		//GLKVector3 Vector { get; set; }
+		[Export("vector")]
+		Vector3 Vector { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -79,8 +79,8 @@ namespace Myo
 		[Export("yaw")] 
 		TLMAngle yaw { get; set; }
 
-		//[Export("anglesWithQuaternion", "__Internal"), Static]
-		//TLMEulerAngles GetAnglesWithQuaternion(GLKQuaternion quaternion);
+		[Static, Export("anglesWithQuaternion:")]
+		TLMEulerAngles GetAnglesWithQuaternion(Quaternion quaternion);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -92,8 +92,8 @@ namespace Myo
 		[Export("timestamp")]
 		NSDate Timestamp { get; set; }
 
-		//[Export("vector")]
-		//GLKVector3 Vector { get; set; }
+		[Export("vector")]
+		Vector3 Vector { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -206,8 +206,8 @@ namespace Myo
 		[Export("timestamp")]
 		NSDate Timestamp { get; set; }
 
-		//[Export("quaternion")]
-		//GLKQuaternion Quaternion { get; set; }
+		[Export("quaternion")]
+		Quaternion Quaternion { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
