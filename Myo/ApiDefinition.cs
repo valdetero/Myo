@@ -42,7 +42,7 @@ namespace Myo
 	}
 
 	[BaseType (typeof (NSObject))]
-	public partial interface TLMArmLostEvent : INSCopying
+	public partial interface TLMArmUnsyncEvent : INSCopying
 	{
 		[Export("myo")] 
 		TLMMyo Myo { get; set; }
@@ -52,7 +52,7 @@ namespace Myo
 	}
 
 	[BaseType (typeof (NSObject))]
-	public partial interface TLMArmRecognizedEvent : INSCopying
+	public partial interface TLMArmSyncEvent : INSCopying
 	{
 		[Export("myo")] 
 		TLMMyo Myo { get; set; }
@@ -71,13 +71,13 @@ namespace Myo
 	public partial interface TLMEulerAngles : INSCopying
 	{
 		[Export("pitch")] 
-		TLMAngle pitch { get; set; }
+		TLMAngle Pitch { get; set; }
 
 		[Export("roll")] 
-		TLMAngle roll { get; set; }
+		TLMAngle Roll { get; set; }
 
 		[Export("yaw")] 
-		TLMAngle yaw { get; set; }
+		TLMAngle Yaw { get; set; }
 
 		[Static, Export("anglesWithQuaternion:")]
 		TLMEulerAngles GetAnglesWithQuaternion(Quaternion quaternion);
@@ -126,6 +126,8 @@ namespace Myo
 		[Export("shouldNotifyInBackground")]
 		bool ShouldNotifyInBackground { get; set; }
 
+		[Export("shouldSendUsageData")]
+		bool ShouldSendUsageData { get; set; }
 
 		[Notification, Field("TLMHubDidAttachDeviceNotification", "__Internal")]
 		NSString TLMHubDidAttachDeviceNotification { get; }
@@ -138,6 +140,12 @@ namespace Myo
 
 		[Notification, Field("TLMHubDidDisconnectDeviceNotification", "__Internal")]
 		NSString TLMHubDidDisconnectDeviceNotification { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	public partial interface TLMLockEvent : INSCopying
+	{
+
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -231,6 +239,12 @@ namespace Myo
 
 		[Static, Export("settingsInPopoverController")] 
 		UIPopoverController SettingsInPopoverController();
+	}
+
+	[BaseType (typeof (NSObject))]
+	public partial interface TLMUnlockEvent : INSCopying
+	{
+
 	}
 	/*
 	[Static]

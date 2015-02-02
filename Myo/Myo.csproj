@@ -56,8 +56,6 @@
     <None Include="MyoKit.h" />
     <None Include="TLMAccelerometerEvent.h" />
     <None Include="TLMAngle.h" />
-    <None Include="TLMArmLostEvent.h" />
-    <None Include="TLMArmRecognizedEvent.h" />
     <None Include="TLMEulerAngles.h" />
     <None Include="TLMGyroscopeEvent.h" />
     <None Include="TLMHub.h" />
@@ -65,5 +63,9 @@
     <None Include="TLMOrientationEvent.h" />
     <None Include="TLMPose.h" />
     <None Include="TLMSettingsViewController.h" />
+    <None Include="TLMArmSyncEvent.h" />
+    <None Include="TLMArmUnsyncEvent.h" />
+    <None Include="TLMLockEvent.h" />
+    <None Include="TLMUnlockEvent.h" />
   </ItemGroup>
 </Project>

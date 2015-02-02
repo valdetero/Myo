@@ -2,6 +2,13 @@
 
 namespace Myo
 {
+	//TLMHub
+	public enum TLMLockingPolicy
+	{
+		TLMLockingPolicyStandard,
+		TLMLockingPolicyNone
+	}
+
 	//TLMMyo
 	public enum TLMMyoConnectionState
 	{
@@ -15,6 +22,11 @@ namespace Myo
 		TLMVibrationLengthMedium,
 		TLMVibrationLengthLong
 	}
+	public enum TLMUnlockType
+	{
+		TLMUnlockTypeTimed,
+		TLMUnlockTypeHold
+	}
 
 	//TLMPose
 	public enum TLMPoseType
@@ -24,18 +36,20 @@ namespace Myo
 		TLMPoseTypeWaveIn		= 2,
 		TLMPoseTypeWaveOut		= 3,
 		TLMPoseTypeFingersSpread= 4,
-		TLMPoseTypeThumbToPinky = 6,
+		TLMPoseTypeDoubleTap	= 6,
 		TLMPoseTypeUnknown		= 0xffff
 	}
 
 	//TLMArmRecognizedEvent
 	public enum TLMArm
 	{
+		TLMArmUnknown,
 		TLMArmRight,
 		TLMArmLeft
 	}
 	public enum TLMArmXDirection
 	{
+		TLMArmXDirectionUnknown,
 		TLMArmXDirectionTowardWrist,
 		TLMArmXDirectionTowardElbow
 	}
