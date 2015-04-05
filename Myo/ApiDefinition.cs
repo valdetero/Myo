@@ -2,10 +2,9 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-using MonoTouch.ObjCRuntime;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
 using OpenTK;
+using Foundation;
+using UIKit;
 
 namespace Myo
 {
@@ -129,6 +128,9 @@ namespace Myo
 		[Export("shouldSendUsageData")]
 		bool ShouldSendUsageData { get; set; }
 
+		[Export("lockingPolicy")]
+		TLMLockingPolicy LockingPolicy { get; set; }
+
 		[Notification, Field("TLMHubDidAttachDeviceNotification", "__Internal")]
 		NSString TLMHubDidAttachDeviceNotification { get; }
 
@@ -151,6 +153,8 @@ namespace Myo
 	[BaseType (typeof (NSObject))]
 	public partial interface TLMMyo
 	{
+
+
 		[Export("readSignalStrengthWithResult:")]
 		void ReadSignalStrengthWithResultAsync(Func<NSNumber> signalStrength);
 
@@ -179,11 +183,17 @@ namespace Myo
 		[Notification, Field("TLMMyoDidReceivePoseChangedNotification", "__Internal")]
 		NSString TLMMyoDidReceivePoseChangedNotification { get; }
 
-		[Notification, Field("TLMMyoDidReceiveArmRecognizedEventNotification", "__Internal")]
-		NSString TLMMyoDidReceiveArmRecognizedEventNotification { get; }
+		[Notification, Field("TLMMyoDidReceiveArmSyncEventNotification", "__Internal")]
+		NSString TLMMyoDidReceiveArmSyncEventNotification { get; }
 
-		[Notification, Field("TLMMyoDidReceiveArmLostEventNotification", "__Internal")]
-		NSString TLMMyoDidReceiveArmLostEventNotification { get; }
+		[Notification, Field("TLMMyoDidReceiveArmUnsyncEventNotification", "__Internal")]
+		NSString TLMMyoDidReceiveArmUnsyncEventNotification { get; }
+
+		[Notification, Field("TLMMyoDidReceiveUnlockEventNotification", "__Internal")]
+		NSString TLMMyoDidReceiveUnlockEventNotification { get; }
+
+		[Notification, Field("TLMMyoDidReceiveLockEventNotification", "__Internal")]
+		NSString TLMMyoDidReceiveLockEventNotification { get; }
 
 		[Field("kTLMKeyOrientationEvent", "__Internal")]
 		NSString TLMKeyOrientationEvent { get; }
@@ -197,11 +207,18 @@ namespace Myo
 		[Field("kTLMKeyPose", "__Internal")]
 		NSString TLMKeyPose { get; }
 
-		[Field("kTLMKeyArmRecognizedEvent", "__Internal")]
-		NSString TLMKeyArmRecognizedEvent { get; }
+		[Field("kTLMKeyArmSyncEvent", "__Internal")]
+		NSString TLMKeyArmSyncEvent { get; }
 
-		[Field("kTLMKeyArmLostEvent", "__Internal")]
-		NSString TLMKeyArmLostEvent { get; }
+		[Field("kTLMKeyArmUnsyncEvent", "__Internal")]
+		NSString TLMKeyArmUnsyncEvent { get; }
+
+		[Field("kTLMKeyUnlockEvent", "__Internal")]
+		NSString TLMKeyUnlockEvent { get; }
+
+		[Field("kTLMKeyLockEvent", "__Internal")]
+		NSString TLMKeyLockEvent { get; }
+
 	}
 
 
@@ -246,50 +263,4 @@ namespace Myo
 	{
 
 	}
-	/*
-	[Static]
-	public partial interface TLMKeys
-	{
-		[Field("kTLMKeyOrientationEvent", "__Internal")]
-		NSString TLMKeyOrientationEvent { get; }
-
-		[Field("kTLMKeyAccelerometerEvent", "__Internal")]
-		NSString TLMKeyAccelerometerEvent { get; }
-
-		[Field("kTLMKeyGyroscopeEvent", "__Internal")]
-		NSString TLMKeyGyroscopeEvent { get; }
-
-		[Field("kTLMKeyPose", "__Internal")]
-		NSString TLMKeyPose { get; }
-
-		[Field("kTLMKeyArmRecognizedEvent", "__Internal")]
-		NSString TLMKeyArmRecognizedEvent { get; }
-
-		[Field("kTLMKeyArmLostEvent", "__Internal")]
-		NSString TLMKeyArmLostEvent { get; }
-	}
-
-	[Static]
-	public partial interface Events
-	{
-		[Notification] 
-		[Field("TLMMyoDidReceiveOrientationEventNotification", "__Internal")]
-		NSString TLMMyoDidReceiveOrientationEventNotification { get; }
-
-		[Notification, Field("TLMMyoDidReceiveAccelerometerEventNotification", "__Internal")]
-		NSString TLMMyoDidReceiveAccelerometerEventNotification { get; }
-
-		[Notification, Field("TLMMyoDidReceiveGyroscopeEventNotification", "__Internal")]
-		NSString TLMMyoDidReceiveGyroscopeEventNotification { get; }
-
-		[Notification, Field("TLMMyoDidReceivePoseChangedNotification", "__Internal")]
-		NSString TLMMyoDidReceivePoseChangedNotification { get; }
-
-		[Notification, Field("TLMMyoDidReceiveArmRecognizedEventNotification", "__Internal")]
-		NSString TLMMyoDidReceiveArmRecognizedEventNotification { get; }
-
-		[Notification, Field("TLMMyoDidReceiveArmLostEventNotification", "__Internal")]
-		NSString TLMMyoDidReceiveArmLostEventNotification { get; }
-	}
-	*/
 }

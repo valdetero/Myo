@@ -40,7 +40,7 @@ namespace Myo
 		TLMPoseTypeUnknown		= 0xffff
 	}
 
-	//TLMArmRecognizedEvent
+	//TLMArmSyncEvent
 	public enum TLMArm
 	{
 		TLMArmUnknown,
